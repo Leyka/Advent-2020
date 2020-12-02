@@ -20,7 +20,7 @@ namespace Advent_2020.Days
             string workingDirPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string inputPath = Path.Combine(workingDirPath, "Inputs"); 
             // Get text file name based on Class. Ex. Day1 => Day1.txt
-            string concreteClassName =  this.GetType().Name;
+            string concreteClassName =  GetType().Name;
             string fullInput = Path.Combine(inputPath, $"{concreteClassName}.txt");
 
             Inputs = File.ReadAllLines(fullInput);
