@@ -1,4 +1,5 @@
 ﻿using System;
+using Advent_2020.Days;
 
 namespace Advent_2020
 {
@@ -6,7 +7,9 @@ namespace Advent_2020
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var day = new Day1();
+            day.RunAndPrintAnswers();
+            Console.ReadLine();
         }
     }
 }
