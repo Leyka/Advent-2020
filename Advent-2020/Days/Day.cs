@@ -9,8 +9,8 @@ namespace Advent_2020.Days
     public abstract class Day
     {
         protected string[] Inputs { get; set; }
-        protected string AnswerPart1 { get; set; }
-        protected string AnswerPart2 { get; set; }
+        protected string AnswerPart1 { get; set; } = "Not implemented yet";
+        protected string AnswerPart2 { get; set; } = "Not implemented yet";
 
         protected abstract void Run();
 
