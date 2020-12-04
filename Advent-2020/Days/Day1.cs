@@ -10,12 +10,12 @@ namespace Advent_2020.Days
         protected override void Run()
         {
             // Part 1
-            for (int i = 0; i < Inputs.Length; i++)
+            for (int i = 0; i < InputLines.Length; i++)
             {
-                int first = int.Parse(Inputs[i]);
+                int first = int.Parse(InputLines[i]);
                 int desiredNumber = 2020 - first;
 
-                bool found = Inputs.Any(x => x == desiredNumber.ToString());
+                bool found = InputLines.Any(x => x == desiredNumber.ToString());
                 if (found)
                 {
                     AnswerPart1 = (first * desiredNumber).ToString();
@@ -24,16 +24,16 @@ namespace Advent_2020.Days
             }
 
             // Part 2
-            for (int i = 0; i < Inputs.Length; i++)
+            for (int i = 0; i < InputLines.Length; i++)
             {
-                int first = int.Parse(Inputs[i]);
+                int first = int.Parse(InputLines[i]);
 
-                for (int j = i+1; j < Inputs.Length; j++)
+                for (int j = i+1; j < InputLines.Length; j++)
                 {
-                    int second = int.Parse(Inputs[j]);
+                    int second = int.Parse(InputLines[j]);
                     int desiredNumber = 2020 - first - second;
 
-                    bool found = Inputs.Any(x => x == desiredNumber.ToString());
+                    bool found = InputLines.Any(x => x == desiredNumber.ToString());
                     if (found)
                     {
                         AnswerPart2 = (first * second * desiredNumber).ToString();

@@ -10,7 +10,7 @@ namespace Advent_2020.Days
     {
         protected override void Run()
         {
-            var passwordPolicies = Inputs.Select(inp => new PasswordPolicy(inp)).ToList();
+            var passwordPolicies = InputLines.Select(inp => new PasswordPolicy(inp)).ToList();
 
             // Part 1
             int countValidPasswords = 0;

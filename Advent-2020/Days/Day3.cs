@@ -12,8 +12,8 @@ namespace Advent_2020.Days
 
         protected override void Run()
         {
-            GridWidth = Inputs[0].Length;
-            GridHeight = Inputs.Length;
+            GridWidth = InputLines[0].Length;
+            GridHeight = InputLines.Length;
 
             // Part 1
             long countTrees = TraverseAndCountTrees(3, 1);
@@ -53,7 +53,7 @@ namespace Advent_2020.Days
                     return countTrees;
                 }
 
-                char element = Inputs[y][x]; // [Row, Column]
+                char element = InputLines[y][x]; // [Row, Column]
                 if (element == '#') // Tree
                 {
                     countTrees++;

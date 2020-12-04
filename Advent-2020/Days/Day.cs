@@ -8,7 +8,8 @@ namespace Advent_2020.Days
 {
     public abstract class Day
     {
-        protected string[] Inputs { get; set; }
+        protected string RawInput { get; set; }
+        protected string[] InputLines { get; set; }
         protected string AnswerPart1 { get; set; } = "Not implemented yet";
         protected string AnswerPart2 { get; set; } = "Not implemented yet";
 
@@ -21,9 +22,10 @@ namespace Advent_2020.Days
             string inputPath = Path.Combine(workingDirPath, "Inputs"); 
             // Get text file name based on Class. Ex. Day1 => Day1.txt
             string concreteClassName =  GetType().Name;
-            string fullInput = Path.Combine(inputPath, $"{concreteClassName}.txt");
+            string fullInputPath = Path.Combine(inputPath, $"{concreteClassName}.txt");
 
-            Inputs = File.ReadAllLines(fullInput);
+            RawInput = File.ReadAllText(fullInputPath);
+            InputLines = File.ReadAllLines(fullInputPath);
         }
 
         public void RunAndPrintAnswers()
