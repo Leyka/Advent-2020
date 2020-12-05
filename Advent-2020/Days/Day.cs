@@ -25,7 +25,7 @@ namespace Advent_2020.Days
             string fullInputPath = Path.Combine(inputPath, $"{concreteClassName}.txt");
 
             RawInput = File.ReadAllText(fullInputPath);
-            InputLines = File.ReadAllLines(fullInputPath);
+            InputLines = RawInput.Split(Environment.NewLine);
         }
 
         public void RunAndPrintAnswers()

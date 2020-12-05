@@ -7,7 +7,7 @@ namespace Advent_2020
     {
         static void Main(string[] args)
         {
-            var day = new Day4();
+            var day = new Day5();
             day.RunAndPrintAnswers();
 
             Console.ReadLine();
