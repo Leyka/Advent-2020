@@ -8,34 +8,37 @@ namespace Advent_2020.Days
 {
     public class Day7 : Day
     {
+        const string SHINY_GOLD = "shiny gold";
+
+        private Dictionary<string, List<Bag>> Bags { get; set; }
+
         protected override void Run()
         {
-            Dictionary<string, List<Bag>> bagsDict = PrepareBagsDictionary();
+            Bags = PrepareBagsDictionary();
 
-            
-            int countValidBagsPart1 = 0;
-            foreach (string color in bagsDict.Keys)
-            {
-                // Part 1 
-                if (CarriesShinyGold(bagsDict, color))
-                {
-                    countValidBagsPart1++;
-                    continue;
-                }
-            }
-            AnswerPart1 = countValidBagsPart1.ToString();
+            // Part 1 
+            int countPart1 = Bags.Keys.Sum(k => CarriesShinyGold(k) ? 1 : 0);
+            AnswerPart1 = countPart1.ToString();
 
             // Part 2
-
+            int countPart2 = SumBagQuantity(SHINY_GOLD);
+            AnswerPart2 = countPart2.ToString();
         }
 
 
-        private bool CarriesShinyGold(Dictionary<string, List<Bag>> bagsDict, string currentColor)
+        private bool CarriesShinyGold(string currentColor)
         {
-            if (bagsDict[currentColor] == null) return false;
-            if (bagsDict[currentColor].Any(b => b.Color == "shiny gold")) return true;
+            if (Bags[currentColor] == null) return false;
+            if (Bags[currentColor].Any(b => b.Color == SHINY_GOLD)) return true;
 
-            return bagsDict[currentColor].Select(b => b.Color).Any(color => CarriesShinyGold(bagsDict, color));
+            return Bags[currentColor].Any(b => CarriesShinyGold(b.Color));
+        }
+
+        private int SumBagQuantity(string currentColor)
+        {
+            if (Bags[currentColor] == null) return 0;
+
+            return Bags[currentColor].Sum(x => x.Quantity + x.Quantity * SumBagQuantity(x.Color));
         }
 
         private Dictionary<string, List<Bag>> PrepareBagsDictionary()
