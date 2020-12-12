@@ -38,15 +38,24 @@ namespace Advent_2020.Days
 
         private double CalculateWeakness(double invalidNumber)
         {
-            double weakness = 0;
-
-            foreach (double nb in AllInputs)
+            for (int i = 0; i < AllInputs.Count; i++)
             {
-                if (nb >= invalidNumber) continue;
-                // TODO: continue part 2
+                double nb = AllInputs[i];
+
+                for (int j = i + 1; j < AllInputs.Count; j++)
+                {
+                    nb += AllInputs[j];
+
+                    if (nb == invalidNumber)
+                    {
+                        // Found weakness
+                        List<double> weaknesses = AllInputs.Skip(i).Take(j-i).ToList();
+                        return weaknesses.Min() + weaknesses.Max();
+                    }
+                }
             }
 
-            return weakness;
+            throw new Exception("Weakness not found");
         }
     }
 }
